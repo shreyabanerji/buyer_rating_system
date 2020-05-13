@@ -149,7 +149,7 @@ def write_to_db():
 @app.route('/brs/book',methods=['POST'])
 def book():
 	data = request.get_json()
-	#{"o_id":"A102","user_id":"100010","p_id":"P103","order_status":"in_progress",pay_method="COD",pay_id="AB01",pay_method="COD"}
+	#{"o_id":"A102","user_id":"100006","p_id":"P103","order_status":"in_progress","pay_method":"COD","pay_id":"1113"}
 	{}
 	
 	#populating orders table :
@@ -169,7 +169,7 @@ def book():
 	ans1 = requests.post("http://127.0.0.1:5000/brs/db/write",json ={"op":"Insert","table":"order_details","column":["o_id","order_status","book_date","exp_del_date"],"value":[str(data['o_id']),data['order_status'],str(book_d),str(exp_d)]})
 	
 	#populating payment_info:
-	ans= requests.post("http://127.0.0.1:5000/brs/db/write",json ={"op":"Insert","table":"payment_info","column":["o_id","pay_id","pay_method"],"value":[str(data['o_id']),data['pay_id'],data['pay_method']]})
+	ans2= requests.post("http://127.0.0.1:5000/brs/db/write",json ={"op":"Insert","table":"payment_info","column":["o_id","pay_id","pay_method"],"value":[str(data['o_id']),data['pay_id'],data['pay_method']]})
 	
 	return jsonify({}),200
 
