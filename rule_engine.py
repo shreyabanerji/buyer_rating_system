@@ -177,7 +177,7 @@ def book():
     
 
 	reply3 = list(requests.get("http://127.0.0.1:5000/brs/db/read",json = {"table":"User","columns":["rating"],"where": cond2 }).json())
-	rating11 = reply3[0][0];
+	rating11 = reply3[0][0]
 	ans4 = requests.post("http://127.0.0.1:5000/brs/rules/offer",json ={"user_id":data["user_id"],"order_status":data["order_status"],"pay_method":data["pay_method"],"category":category1,"price":price1,"rating":rating11})
 	ans5 = requests.post("http://127.0.0.1:5000/brs/rules/reject",json ={"user_id":data["user_id"],"order_status":data["order_status"],"pay_method":data["pay_method"],"category":category1,"price":price1,"rating":rating11})
     
